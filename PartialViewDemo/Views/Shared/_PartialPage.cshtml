@@ -1,0 +1,16 @@
+﻿
+@using PartialViewDemo.Models
+
+<h4>
+    Partial Page Content
+</h4>
+
+
+@foreach (Customer customer in Model.Customers)
+{
+    <div class="row">
+        <div class="col-lg-4">@customer.Name</div>
+        <div class="col-lg-4">@customer.Address</div>
+        <div class="col-lg-4">@customer.Phone</div>
+    </div>
+}

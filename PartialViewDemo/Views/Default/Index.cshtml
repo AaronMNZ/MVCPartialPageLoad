@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Partial Page Load Demo</h2>
+
+<div class="row">
+    <div id="Load1" class="col-lg-2 btn btn-primary">Click to load list one</div>
+    <div class="col-lg-1"></div>
+    <div id="Load2" class="col-lg-2 btn btn-primary">Click to load list two</div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-1">
+        <div id="PartialPageContentGoesHere">
+            @* Partial page content will go here*@
+        </div>    
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $("#Load1").click(function () {
+            $("#PartialPageContentGoesHere").html("<div class='spinner-loader'></div>");
+            $("#PartialPageContentGoesHere").load('@Url.Action("PartialContent", "Default", new {id = "1" })', { noncache: new Date().getTime() });
+        });
+        $("#Load2").click(function () {
+            $("#PartialPageContentGoesHere").html("<div class='spinner-loader'></div>");
+            $("#PartialPageContentGoesHere").load('@Url.Action("PartialContent", "Default", new {id = "2" })', { noncache: new Date().getTime() });
+        });
+    </script>
+}
